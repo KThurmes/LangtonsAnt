@@ -13,7 +13,7 @@ private:
 
 public:
     Game();
-    Game(int, Board);
+    Game(int,const Board&);
     void playGame();
     void runMainMenu();
 };

@@ -15,7 +15,7 @@ Board::Board()
     rows = 10;
     cols = 10;
 
-    setBoard(rows, cols);
+    setBoard();
 }
 
 Board::Board(int bRows, int bCols, int antRow, int antCol, int antOrient)
@@ -23,12 +23,12 @@ Board::Board(int bRows, int bCols, int antRow, int antCol, int antOrient)
     cout << "creating a new custom board!" << endl;
     rows = bRows;
     cols = bCols;
-    setBoard(rows, cols);
+    setBoard();
     agentAnt.setLocation(antRow, antCol);
     agentAnt.setOrientation(antOrient);
 }
 
-void Board::setBoard(int rows, int cols)
+void Board::setBoard()
 {
     boardLayout = new char *[rows]; //An array of pointers to arrays of chars
     for (int i = 0; i < rows; i++)
@@ -59,7 +59,7 @@ void Board::printBoard()
             //Print the location of the ant
             if (i == antRow && j == antCol)
             {
-                cout << "X";
+                cout << 'X';
             }
 
             //Print the color of all other squares
@@ -71,6 +71,7 @@ void Board::printBoard()
         cout << endl;
     }
     cout << "Ant space: '" << getSpaceColor(antRow, antCol) << "'" << endl;
+
     cout << "Ant orientation: " << agentAnt.getOrientation() << endl;
 }
 

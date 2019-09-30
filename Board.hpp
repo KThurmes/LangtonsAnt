@@ -12,7 +12,7 @@ private:
     int cols;
     char getSpaceColor(int, int);
     void antStep();
-    void setBoard(int, int);
+    void setBoard();
 
 public:
     Board();

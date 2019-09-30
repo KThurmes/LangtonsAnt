@@ -6,9 +6,8 @@ Game::Game()
     totalMoves = 5;
 }
 
-Game::Game(int theMoves, Board theBoard){
+Game::Game(int theMoves,const Board& theBoard){
     totalMoves = theMoves;
-    delete &gameBoard;
     gameBoard = theBoard;
 }
 
