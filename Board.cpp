@@ -7,28 +7,26 @@ using std::endl;
 Board::Board()
 {
     cout << "creating a new generic board!" << endl;
+
     //Default ant constructor
     Ant player;
     agentAnt = player;
 
-    //Default size of a board is 10x10
-    rows = 10;
-    cols = 10;
-
-    setBoard();
+    rows = 0;
+    cols = 0;
 }
 
-Board::Board(int bRows, int bCols, int antRow, int antCol, int antOrient)
+void Board::setRows(int r)
 {
-    cout << "creating a new custom board!" << endl;
-    rows = bRows;
-    cols = bCols;
-    setBoard();
-    agentAnt.setLocation(antRow, antCol);
-    agentAnt.setOrientation(antOrient);
+    rows = r;
 }
 
-void Board::setBoard()
+void Board::setCols(int c)
+{
+    cols = c;
+}
+
+void Board::setBoardLayout()
 {
     boardLayout = new char *[rows]; //An array of pointers to arrays of chars
     for (int i = 0; i < rows; i++)
@@ -44,6 +42,16 @@ void Board::setBoard()
             boardLayout[i][j] = ' ';
         }
     }
+}
+
+void Board::deleteBoardLayout()
+{
+    for (int i = 0; i < rows; i++)
+    {
+        delete[] boardLayout[i];
+    }
+    delete[] boardLayout;
+    cout << "Deleting a boardLayout!" << endl;
 }
 
 void Board::printBoard()
@@ -145,14 +153,4 @@ void Board::antStep()
             agentAnt.setLocation(antRow, antCol - 1);
         }
     }
-}
-
-Board::~Board()
-{
-    for (int i = 0; i < rows; i++)
-    {
-        delete boardLayout[i];
-    }
-    delete boardLayout;
-    cout << "Deleting a boardLayout!" << endl;
 }

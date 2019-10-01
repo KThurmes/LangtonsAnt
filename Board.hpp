@@ -17,9 +17,12 @@ private:
 public:
     Board();
     Board(int, int, int, int, int);
-    ~Board();
     void moveAnt();
     void printBoard();
+    void setBoardLayout();
+    void setRows(int);
+    void setCols(int);
+    void deleteBoardLayout();
 };
 
 #endif

@@ -7,15 +7,19 @@ class Game
 {
 
 private:
-    Menu gameMenu;
+    Menu startMenu;
+    Menu endMenu;
     Board gameBoard;
     int totalMoves;
 
 public:
     Game();
-    Game(int,const Board&);
+    Game(int, int, int, int, int, int);
     void playGame();
-    void runMainMenu();
+    void runStartMenu();
+    void runEndMenu();
+    void setStartMenu(Menu &);
+    void setEndMenu(Menu &);
 };
 
 #endif

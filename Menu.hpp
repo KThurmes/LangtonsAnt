@@ -8,12 +8,12 @@ class Menu
 {
 
 private:
-    string menuOptions = "1. Start Langton's Ant simulation \n2. Quit\n";
+    string menuOptions = "";
 
 public:
     char showMenu();
     void getUserChoice();
-
+    void setMenuOptions(string);
 };
 
 #endif

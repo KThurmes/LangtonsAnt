@@ -1,28 +1,45 @@
 #include "Game.hpp"
+#include <string>
+#include <iostream>
+#include "Menu.hpp"
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 Game::Game()
 {
-    //Use default constructor for gameBoard, default moveCount is 5.
     totalMoves = 5;
 }
 
-Game::Game(int theMoves,const Board& theBoard){
+Game::Game(int theMoves, int nRows, int nCols, int antRow, int antCol, int antOrient)
+{
     totalMoves = theMoves;
-    gameBoard = theBoard;
+    gameBoard = Board();
+    gameBoard.setRows(nRows);
+    gameBoard.setCols(nCols);
+    gameBoard.setBoardLayout();
 }
 
+void Game::runStartMenu()
+{
+    char usersChoice = startMenu.showMenu();
+    switch (usersChoice)
+    {
+    case '1':
+        //TODO: get user input on new game. Load up new game
+        playGame();
+        runEndMenu();
+        break;
 
-void Game::runMainMenu(){
-    char usersChoice = gameMenu.showMenu();
-    switch (usersChoice){
-        case '1': 
-            //TODO: get user input on new game. Load up new game
-            playGame();
-            break;
- 
-        case '2': 
-            break;
+    case '2':
+        //gameBoard.deleteBoardLayout();
+        //quit
+        break;
     }
+    //gameBoard.deleteBoardLayout();
+    cout << "Thanks for playing!" << endl;
 }
 
 void Game::playGame()
@@ -37,4 +54,29 @@ void Game::playGame()
         numMovesCompleted++;
     }
     gameBoard.printBoard();
+    gameBoard.deleteBoardLayout();
+}
+
+void Game::runEndMenu()
+{
+    char usersChoice = endMenu.showMenu();
+    switch (usersChoice)
+    {
+    case '1':
+        playGame();
+        runEndMenu();
+        break;
+    case '2':
+        break;
+    }
+}
+
+void Game::setStartMenu(Menu &sMenu)
+{
+    startMenu = sMenu;
+}
+
+void Game::setEndMenu(Menu &eMenu)
+{
+    endMenu = eMenu;
 }
