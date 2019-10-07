@@ -11,9 +11,9 @@ private:
     string menuOptions = "";
 
 public:
-    char showMenu();
-    void getUserChoice();
+    char runMenu();
     void setMenuOptions(string);
+    void gameStartup();
 };
 
 #endif
