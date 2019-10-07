@@ -23,6 +23,7 @@ public:
     void setRows(int);
     void setCols(int);
     void deleteBoardLayout();
+    void setAnt(int, int);
 };
 
 #endif

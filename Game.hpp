@@ -3,23 +3,22 @@
 
 #include "Board.hpp"
 #include "Menu.hpp"
+
 class Game
 {
 
 private:
-    Menu startMenu;
-    Menu endMenu;
+    // Menu::Menu startMenu;
+    // Menu::Menu endMenu;
     Board gameBoard;
     int totalMoves;
 
 public:
     Game();
-    Game(int, int, int, int, int, int);
+    Game(int, int, int, int, int);
     void playGame();
-    void runStartMenu();
-    void runEndMenu();
-    void setStartMenu(Menu &);
-    void setEndMenu(Menu &);
+    // void runStartMenu();
+    // void runEndMenu();
 };
 
 #endif

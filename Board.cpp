@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include "Ant.hpp"
 #include <iostream>
 
 using std::cout;
@@ -153,4 +154,8 @@ void Board::antStep()
             agentAnt.setLocation(antRow, antCol - 1);
         }
     }
+}
+
+void Board::setAnt(int antRow, int antCol){
+    agentAnt = Ant(antRow, antCol, 1);
 }
