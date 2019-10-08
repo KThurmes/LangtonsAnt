@@ -1,5 +1,6 @@
 #include "runMenu.hpp"
 #include "Game.hpp"
+#include "getValidInt.hpp"
 #include <string>
 #include <iostream>
 
@@ -16,7 +17,7 @@ void runMenu()
     //Ask user if they want to do a custom simulation or a default
     cout << "Please select from the following options:\n1. Start Langton's Ant simulation\n2. Quit"
          << endl;
-    cin >> selection;
+    selection = getValidMenuSelection();
 
     if (selection == 1)
     {
@@ -35,7 +36,7 @@ void simulationSetup()
     int antCol;
     
     int selection;
-    cin >> selection;
+    selection = getValidMenuSelection();
 
     if (selection == 1)
     {
@@ -55,8 +56,8 @@ void simulationSetup()
         rowCount = 10;
         colCount = 10;
         steps = 5;
-        antRow = 5;
-        antCol = 5;
+        antRow = 4;
+        antCol = 4;
     }
 
     Game theGame(steps, rowCount, colCount, antRow, antCol);
@@ -65,7 +66,7 @@ void simulationSetup()
     //ask if the user wants to do it again
     cout << "Please select from the following options:\n1. Run another simulation\n2.Quit"
          << endl;
-    cin >> selection;
+    selection = getValidMenuSelection();
     if (selection == 1)
     {
         simulationSetup();
