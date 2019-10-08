@@ -86,7 +86,6 @@ void Board::printBoard()
 
 char Board::getSpaceColor(int row, int col)
 {
-    //TODO: make sure space exists
     return boardLayout[row][col];
 }
 

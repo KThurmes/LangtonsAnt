@@ -1,7 +1,3 @@
-#include "Game.hpp"
-#include "Menu.hpp"
-#include "Ant.hpp"
-#include "Board.hpp"
 #include "runMenu.hpp"
 
 int main()
