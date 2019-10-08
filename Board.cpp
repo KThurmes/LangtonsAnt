@@ -7,7 +7,7 @@ using std::endl;
 
 Board::Board()
 {
-    cout << "creating a new generic board!" << endl;
+    //cout << "creating a new generic board!" << endl;
 
     //Default ant constructor
     Ant player;
@@ -60,9 +60,14 @@ void Board::printBoard()
     int antRow = agentAnt.getLocationRow();
     int antCol = agentAnt.getLocationCol();
 
-    cout << "Printing board: " << endl;
+    //cout << "Printing board: " << endl;
+    for( int i = 0; i < cols + 2 ; i++){
+        cout << "-";
+    }
+    cout << endl;
     for (int i = (rows - 1); i >= 0; i--)
     {
+        cout << "|";
         for (int j = 0; j < cols; j++)
         {
             //Print the location of the ant
@@ -77,11 +82,16 @@ void Board::printBoard()
                 cout << boardLayout[i][j];
             }
         }
+        cout << "|";
         cout << endl;
     }
-    cout << "Ant space: '" << getSpaceColor(antRow, antCol) << "'" << endl;
+    for( int i = 0; i < cols + 2 ; i++){
+        cout << "-";
+    }
+    cout<<endl;
+    //cout << "Ant space: '" << getSpaceColor(antRow, antCol) << "'" << endl;
 
-    cout << "Ant orientation: " << agentAnt.getOrientation() << endl;
+    //cout << "Ant orientation: " << agentAnt.getOrientation() << endl;
 }
 
 char Board::getSpaceColor(int row, int col)
