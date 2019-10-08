@@ -1,6 +1,7 @@
 #include "runMenu.hpp"
 #include "Game.hpp"
 #include "getValidInt.hpp"
+#include "getNumberBetween.hpp"
 #include <string>
 #include <iostream>
 
@@ -17,7 +18,7 @@ void runMenu()
     //Ask user if they want to do a custom simulation or a default
     cout << "Please select from the following options:\n1. Start Langton's Ant simulation\n2. Quit"
          << endl;
-    selection = getValidMenuSelection();
+    selection = getNumberBetween(1,2);
 
     if (selection == 1)
     {
@@ -36,20 +37,20 @@ void simulationSetup()
     int antCol;
     
     int selection;
-    selection = getValidMenuSelection();
+    selection = getNumberBetween(1,2);
 
     if (selection == 1)
     {
         cout << "Number of rows on the board: " << endl;
-        cin >> rowCount;
+        rowCount = getNumberBetween(2, 500);
         cout << "Number of columns on the board: " << endl;
-        cin >> colCount;
+        colCount = getNumberBetween(2, 500);
         cout << "Number of steps during the simulation: " << endl;
-        cin >> steps;
+        steps = getNumberBetween(1, 5000);
         cout << "Starting row of the ant: " << endl;
-        cin >> antRow;
+        antRow = getNumberBetween(1, rowCount);
         cout << "Starting column of the ant: " << endl;
-        cin >> antCol;
+        antCol = getNumberBetween(1, colCount);
     }
     else
     {
@@ -66,7 +67,7 @@ void simulationSetup()
     //ask if the user wants to do it again
     cout << "Please select from the following options:\n1. Run another simulation\n2.Quit"
          << endl;
-    selection = getValidMenuSelection();
+    selection = getNumberBetween(1,2);
     if (selection == 1)
     {
         simulationSetup();

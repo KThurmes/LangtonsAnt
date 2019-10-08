@@ -16,7 +16,6 @@ was either 1 or 2.
 using std::cin;
 using std::cout;
 using std::endl;
-int getValidMenuSelection();
 
 
 /********************************************************************* 
@@ -28,7 +27,7 @@ user submits a valid integer.
 ** Limitation: getInt() will accept decimal values that end in ".0" 
 as integers.
 *********************************************************************/ 
-int getInt(){
+int getValidInt(){
     //Input validation code and cin stream resetting adapted from https://stackoverflow.com/questions/19521320/why-do-i-get-an-infinite-loop-if-i-enter-a-letter-rather-than-a-number
     //Accessed 1 Oct., 2019
 
@@ -42,7 +41,7 @@ int getInt(){
         cout << "Please enter an integer." << endl;
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        rawInput = getInt();
+        rawInput = getValidInt();
     }
 
     //Check to make sure a decimal value hasn't been entered. If it isn't, ask the user for input again. This also checks that the max/min value of an int hasn't been exceeded
@@ -52,7 +51,7 @@ int getInt(){
         cout << "Please enter an integer between -2147483648 and 2147483647.." << endl;
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        rawInput = getInt();
+        rawInput = getValidInt();
     }
 
     return input;
@@ -68,7 +67,7 @@ does.
 ** Return value: Returns the submitted integer. It will either be a 
 1 or a 2.
 *********************************************************************/ 
-int getValidMenuSelection()
+/* int getValidMenuSelection()
 {
     //Get an integer from the user
     int input = getInt();
@@ -81,4 +80,4 @@ int getValidMenuSelection()
     }
 
     return input;
-}
+} */

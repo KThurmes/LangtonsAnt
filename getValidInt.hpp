@@ -1,7 +1,7 @@
 #ifndef GETVALIDINT_HPP
 #define GETVALIDINT_HPP
 
-int getInt();
-int getValidMenuSelection();
+int getValidInt();
+//int getValidMenuSelection();
 
 #endif

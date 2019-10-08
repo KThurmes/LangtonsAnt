@@ -37,7 +37,7 @@ Game::Game(int theMoves, int nRows, int nCols, int antRow, int antCol)
     gameBoard.setRows(nRows);
     gameBoard.setCols(nCols);
     gameBoard.setBoardLayout();
-    gameBoard.setAnt(antRow,antCol);
+    gameBoard.setAnt((antRow-1),(antCol-1));
 }
 
 /* void Game::runStartMenu()
