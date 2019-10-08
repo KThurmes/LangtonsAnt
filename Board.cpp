@@ -73,7 +73,7 @@ void Board::printBoard()
             //Print the location of the ant
             if (i == antRow && j == antCol)
             {
-                cout << 'X';
+                cout << '*';
             }
 
             //Print the color of all other squares
