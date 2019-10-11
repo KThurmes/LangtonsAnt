@@ -12,18 +12,17 @@ private:
     int cols;
     char getSpaceColor(int, int);
     void antStep();
-    void setBoard();
 
 public:
     Board();
-    Board(int, int, int, int, int);
-    void moveAnt();
-    void printBoard();
-    void setBoardLayout();
     void setRows(int);
     void setCols(int);
+    void setBoardLayout();
     void deleteBoardLayout();
+    void printBoard();
+    void moveAnt();
     void setAnt(int, int);
+    void toggleColor(int, int);
 };
 
 #endif

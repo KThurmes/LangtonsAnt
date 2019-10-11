@@ -14,7 +14,6 @@ public:
     Game();
     Game(int, int, int, int, int);
     void playGame();
-
 };
 
 #endif

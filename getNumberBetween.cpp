@@ -1,13 +1,15 @@
 /********************************************************************* 
-** getValidSelection() description: getValidSelection() is a 
-function that will ask the user to select either a "1" or a "2". It 
-will call getInt() to accept an integer from the user and then it 
-will test to make sure the integer is either 1 or 2. If it is not, 
-it will ask the user again to submit either 1 or 2 until the user 
-does.
-** Return value: Returns the submitted integer. It will either be a 
-1 or a 2.
-*********************************************************************/ 
+** Author: Katheen Thurmes
+** Date: 8 Oct., 2019
+** Description: getNumberBetween()  is a 
+function that will ask the user to select a number between "low" and 
+"high" (inclusive).  It calls getValidInt() to accept an integer from 
+the user and then it tests that input to make sure the integer is 
+within the acceptable range. If it is not, it will ask the user again
+to submit a valid input until the user does.
+** Return value: Returns the submitted integer that is within the 
+accepted range
+*********************************************************************/
 
 #include "getValidInt.hpp"
 #include <iostream>
@@ -23,6 +25,7 @@ int getNumberBetween(int low, int high){
     //Check that the integer is between low and high.
     if (input < low || input > high){
         cout << "Please enter an integer between " << low << " and " << high << "." << endl;
+        //Clear input stream
         cin.clear();
         input = getNumberBetween(low, high);
     }

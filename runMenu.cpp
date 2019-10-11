@@ -1,3 +1,11 @@
+/********************************************************************* 
+** Author: Katheen Thurmes
+** Date: 8 Oct., 2019
+** Description: runMenu() is the driver function of the program. 
+Using input from the user, it runs functions that set up the game and 
+run the simulations. It will continue to let the player run 
+simulations until the player chooses to exit the program.
+*********************************************************************/ 
 #include "runMenu.hpp"
 #include "Game.hpp"
 #include "getNumberBetween.hpp"
@@ -15,9 +23,9 @@ void runMenu()
 {
     int selection;
 
-    //Ask user if they want to do a full custom simulation or have ant placed at random location
     cout << "Please select from the following options:\n1. Start Langton's Ant simulation\n2. Quit"
          << endl;
+    //Use getNumberBetween for input validation
     selection = getNumberBetween(1,2);
 
     //Run new simulations until the player chooses to exit.
