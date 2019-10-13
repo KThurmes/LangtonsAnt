@@ -1,8 +1,8 @@
 #ifndef SIMULATIONSETUP_HPP
 #define SIMULATIONSETUP_HPP
 
-#include "Game.hpp"
+#include "Simulation.hpp"
 
-Game simulationSetup();
+Simulation simulationSetup();
 
 #endif

@@ -12,7 +12,7 @@ up game.
 *********************************************************************/ 
 
 #include "simulationSetup.hpp"
-#include "Game.hpp"
+#include "Simulation.hpp"
 #include <iostream>
 #include "getNumberBetween.hpp"
 
@@ -20,7 +20,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-Game simulationSetup()
+Simulation simulationSetup()
 {
     cout << "Please select from the following options:\n1. Create custom simulation\n2. Random ant starting location" << endl;
     int rowCount;
@@ -34,11 +34,12 @@ Game simulationSetup()
 
     //Get board dimensions and # of steps from user, regardless of selection
     cout << "Number of rows on the board: " << endl;
-    rowCount = getNumberBetween(2, 500);
+    rowCount = getNumberBetween(2, 100);
     cout << "Number of columns on the board: " << endl;
-    colCount = getNumberBetween(2, 500);
+    colCount = getNumberBetween(2, 100);
     cout << "Number of steps during the simulation: " << endl;
-    steps = getNumberBetween(1, 5000);
+    steps = getNumberBetween(1, 1000);
+
 
     //If user wants to choose their own ant start location, ask them for it
     if (selection == 1)
@@ -60,6 +61,6 @@ Game simulationSetup()
     }
 
     //Set up the game
-    Game theGame(steps, rowCount, colCount, antRow, antCol);
+    Simulation theGame(steps, rowCount, colCount, antRow, antCol);
     return theGame;
 }

@@ -11,9 +11,6 @@ to the left or right.
 
 Ant::Ant()
 {
-    orientation = 0;
-    locationRow = 0;
-    locationCol = 0;
 }
 
 Ant::Ant(int row, int col, int orient)

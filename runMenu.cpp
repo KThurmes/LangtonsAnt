@@ -7,7 +7,7 @@ run the simulations. It will continue to let the player run
 simulations until the player chooses to exit the program.
 *********************************************************************/ 
 #include "runMenu.hpp"
-#include "Game.hpp"
+#include "Simulation.hpp"
 #include "getNumberBetween.hpp"
 #include "simulationSetup.hpp"
 #include <string>
@@ -31,7 +31,7 @@ void runMenu()
     //Run new simulations until the player chooses to exit.
     while (selection == 1)
     {
-        Game theGame = simulationSetup();
+        Simulation theGame = simulationSetup();
         theGame.playGame();
 
         //Ask if the user wants to do it again

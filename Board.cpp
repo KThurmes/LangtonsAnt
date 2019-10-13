@@ -2,18 +2,16 @@
 ** Author: Katheen Thurmes
 ** Date: 8 Oct., 2019
 ** Description: A board object designed for use in the implementation 
-of a Langton's Ant simulation. Its data members include an ant 
-object, a board layout in the form of a 2D array, and the number of 
-rows and columns the board has.
-It has member functions that can tell the ant to make a move, return 
-the color of a space, set up the 2D array with all white spaces and 
-a visual location of the ant, a function to delete the dynamically 
-allocated 2D boardLayout array, a function to display the 2D array 
-on the console, and to manipulate its ant.
+of a Langton's Ant simulation. Its data members include a board layout 
+in the form of a 2D array, and the number of rows and columns the 
+board has.
+It has member functions that can return the color of a space, 
+initialize the 2D array with all white spaces, a function to delete 
+the dynamically allocated 2D boardLayout array, a function to display 
+the 2D array on the console, and to change the color of a square.
 *********************************************************************/
 
 #include "Board.hpp"
-#include "Ant.hpp"
 #include <iostream>
 
 using std::cout;
@@ -21,12 +19,6 @@ using std::endl;
 
 Board::Board()
 {
-    //Use default ant constructor
-    Ant player;
-    agentAnt = player;
-
-    rows = 0;
-    cols = 0;
 }
 
 void Board::setRows(int r)
@@ -37,6 +29,25 @@ void Board::setRows(int r)
 void Board::setCols(int c)
 {
     cols = c;
+}
+
+int Board::getRows()
+{
+    return rows;
+}
+
+int Board::getCols()
+{
+    return cols;
+}
+
+/********************************************************************* 
+** Description: Returns the color of the space on the board indicated 
+by row, col. Returns ' ' for white and '#' for black.
+*********************************************************************/
+char Board::getSpaceColor(int row, int col)
+{
+    return boardLayout[row][col];
 }
 
 /********************************************************************* 
@@ -62,7 +73,7 @@ void Board::setBoardLayout()
         }
     }
 
-    boardLayout[1][1] = '#';
+    //boardLayout[1][1] = '#';
 }
 
 /********************************************************************* 
@@ -84,12 +95,11 @@ void Board::deleteBoardLayout()
 /********************************************************************* 
 ** Description: Prints a representation of the game board to the 
 screen. Blank spaces represent white spaces and # represent black 
-spaces. * represents the location of the ant.
+spaces. * represents the location of the ant. Inputs are the row and 
+column where the ant is to be placed.
 *********************************************************************/
-void Board::printBoard()
+void Board::printBoard(int antRow, int antCol)
 {
-    int antRow = agentAnt.getLocationRow();
-    int antCol = agentAnt.getLocationCol();
 
     //Top border
     for (int i = 0; i < cols + 2; i++)
@@ -132,100 +142,8 @@ void Board::printBoard()
 }
 
 /********************************************************************* 
-** Description: This function will turn the ant in the direction 
-prescribed in the Langton's ant directions. it also changes the color 
-of the square that the ant is currently on. It does not move the ant, 
-but calls antStep() to move the ant.
-*********************************************************************/
-void Board::moveAnt()
-{
-    int antRow = agentAnt.getLocationRow();
-    int antCol = agentAnt.getLocationCol();
-
-    char antSpaceColor = getSpaceColor(antRow, antCol);
-
-    //Ant is on white space
-    if (antSpaceColor == ' ')
-    {
-        agentAnt.turnRight();
-    }
-
-    //Ant is on black space
-    else
-    {
-        agentAnt.turnLeft();
-    }
-
-    antStep();
-}
-
-void Board::setAnt(int antRow, int antCol)
-{
-    agentAnt = Ant(antRow, antCol, 3);
-}
-
-/********************************************************************* 
-** Description: Returns the color of the space on the board indicated 
-by row, col. Returns ' ' for white and '#' for black.
-*********************************************************************/
-char Board::getSpaceColor(int row, int col)
-{
-    return boardLayout[row][col];
-}
-
-/********************************************************************* 
-** Description: antStep() moves the ant forward in the direction 
-indicated by the ant's orientation. If the ant would go off the board 
-if it moved forward one space, then it instead stays where it is. The 
-square's color will only be changed if the ant moves off of it.
-*********************************************************************/
-void Board::antStep()
-{
-    int antRow = agentAnt.getLocationRow();
-    int antCol = agentAnt.getLocationCol();
-    int antOrientation = agentAnt.getOrientation();
-
-    //Facing up
-    if (antOrientation == 0)
-    {
-        if (antRow + 1 < rows)
-        {
-            toggleColor(antRow, antCol);
-            agentAnt.setLocation(antRow + 1, antCol);
-        }
-    }
-    //Facing right
-    if (antOrientation == 1)
-    {
-        if (antCol + 1 < cols)
-        {
-            toggleColor(antRow, antCol);
-            agentAnt.setLocation(antRow, antCol + 1);
-        }
-    }
-    //Facing down
-    if (antOrientation == 2)
-    {
-        if (!(antRow - 1 < 0))
-        {
-            toggleColor(antRow, antCol);
-            agentAnt.setLocation(antRow - 1, antCol);
-        }
-    }
-    //Facing left
-    if (antOrientation == 3)
-    {
-        if (!(antCol - 1 < 0))
-        {
-            toggleColor(antRow, antCol);
-            agentAnt.setLocation(antRow, antCol - 1);
-        }
-    }
-}
-
-/********************************************************************* 
 ** Description: toggleColor(row, col) will change the color of the 
-square at row,col. If it was white, it'll be black and if it was 
+square at row, col. If it was white, it'll be black and if it was 
 black, it'll be white.
 *********************************************************************/
 void Board::toggleColor(int row, int col)
